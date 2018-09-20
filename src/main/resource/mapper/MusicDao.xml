@@ -10,4 +10,10 @@
         VALUES (#{name}, #{musicData}, #{singer}, #{duration}, #{imageData})
     </insert>
 
+    <select id="queryByName" parameterType="String" resultType="Music">
+        SELECT *
+        FROM music
+        WHERE name = #{name}
+    </select>
+
 </mapper>

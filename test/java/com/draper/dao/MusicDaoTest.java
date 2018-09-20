@@ -31,8 +31,12 @@ public class MusicDaoTest extends BaseTest {
                 music.getDuration(),
                 music.getImageData()
         );
+    }
 
-
+    @Test
+    public void testQueryByName() throws Exception {
+        Music music = musicDao.queryByName("Too Bad");
+        System.out.println(music.getName());
     }
 
     public static void main(String[] args) {
