@@ -13,7 +13,7 @@ public interface MusicDao {
 
     void insertMusic(@Param("name") String name, @Param("musicData") Blob musicData, @Param("singer") String singer, @Param("duration") int duration, @Param("imageData") Blob imageData);
 
-    String find(String name, String outputPath);
+    Music queryByName(@Param("name") String name);
 
     String findImage(String name);
 
