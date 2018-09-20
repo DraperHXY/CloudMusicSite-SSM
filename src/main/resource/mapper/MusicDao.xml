@@ -5,7 +5,7 @@
 <mapper namespace="com.draper.dao.MusicDao">
     <!-- 目的：为dao接口方法提供sql语句配置 -->
 
-    <insert id="insert">
+    <insert id="insertMusic">
         INSERT INTO music (name, datas, singer, duration, image)
         VALUES (#{name}, #{musicData}, #{singer}, #{duration}, #{imageData})
     </insert>

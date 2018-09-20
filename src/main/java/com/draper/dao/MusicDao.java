@@ -11,7 +11,7 @@ public interface MusicDao {
 
     void add(File file);
 
-    void insert(@Param("name") String name, @Param("musicData") Blob musicData, @Param("singer") String singer, @Param("duration") int duration, @Param("imageData") Blob imageData);
+    void insertMusic(@Param("name") String name, @Param("musicData") Blob musicData, @Param("singer") String singer, @Param("duration") int duration, @Param("imageData") Blob imageData);
 
     String find(String name, String outputPath);
 
