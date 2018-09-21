@@ -13,8 +13,15 @@ public class MusicDaoTest extends BaseTest {
     @Autowired
     private MusicDao musicDao;
 
+//    @Test
+//    public void testQueryById() throws Exception {
+//        long bookId = 1000;
+//        Book book = bookDao.queryById(bookId);
+//        System.out.println(book);
+//    }
+
     @Test
-    public void testInsertMusic() throws Exception {
+    public void testInsert() throws Exception {
         Music music = Mp3Util.getMP3Info(new File("test/resource/Imagine Dragons - Demons.mp3"));
 
         musicDao.insertMusic(
@@ -25,4 +32,12 @@ public class MusicDaoTest extends BaseTest {
                 music.getImageData()
         );
     }
+
+    @Test
+    public void testQueryByName() throws Exception {
+        Music music = musicDao.queryByName("Too Bad");
+        System.out.println(music.getName());
+    }
+
+
 }
