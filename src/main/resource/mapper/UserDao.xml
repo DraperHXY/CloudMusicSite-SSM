@@ -10,4 +10,8 @@
         VALUES (#{name}, #{account}, #{password}, #{credit})
     </insert>
 
+    <select id="queryUserByAccount" resultType="User">
+        SELECT * FROM user WHERE account = #{account}
+    </select>
+
 </mapper>

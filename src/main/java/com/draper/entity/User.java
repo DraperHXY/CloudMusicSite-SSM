@@ -10,6 +10,9 @@ public class User {
     private Date lastLoginTime;
     private boolean isOnline;
 
+    public User() {
+    }
+
     public User(String account) {
         this.account = account;
     }
@@ -25,6 +28,11 @@ public class User {
     public String getAccount() {
         return account;
     }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
 
     public String getPassword() {
         return password;
