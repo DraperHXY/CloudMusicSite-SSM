@@ -5,7 +5,9 @@ import org.apache.ibatis.annotations.Param;
 
 import java.io.File;
 import java.sql.Blob;
+import java.sql.ResultSet;
 import java.util.List;
+import java.util.Map;
 
 public interface MusicDao {
 
@@ -21,7 +23,13 @@ public interface MusicDao {
 
     String findMusicData(String name);
 
-    int getMusicNum();
+    int queryMusicNum();
+
+    Map queryMusicData(@Param("name") String name);
+
+    Map queryImageData(@Param("name") String name);
+
+    List<String> queryAllMusicName();
 
     List<String> findMusicNameList();
 }

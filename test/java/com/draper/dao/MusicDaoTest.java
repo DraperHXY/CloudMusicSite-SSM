@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
+import java.sql.ResultSet;
+import java.util.List;
 
 public class MusicDaoTest extends BaseTest {
 
@@ -32,5 +34,17 @@ public class MusicDaoTest extends BaseTest {
         System.out.println(music.getName());
     }
 
+    @Test
+    public void testQueryMusicNum() throws Exception {
+        System.out.println(musicDao.queryMusicNum());
+    }
+
+    @Test
+    public void testQueryAllMusicName() throws Exception {
+        List<String> nameList = musicDao.queryAllMusicName();
+        for (String s : nameList) {
+            System.out.println(s);
+        }
+    }
 
 }

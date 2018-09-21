@@ -7,13 +7,44 @@
 
     <insert id="insertMusic">
         INSERT INTO music (name, datas, singer, duration, image)
-        VALUES (#{name}, #{musicData}, #{singer}, #{duration}, #{imageData})
+        VALUES (#{name}, #{musicData}, #{singer}, #{duration}, #{imageData});
     </insert>
 
     <select id="queryByName" parameterType="String" resultType="Music">
         SELECT *
         FROM music
-        WHERE name = #{name}
+        WHERE name = #{name};
     </select>
+
+    <select id="queryMusicNum" resultType="Integer">
+        SELECT COUNT(*)
+        FROM music;
+    </select>
+
+    <select id="queryMusicData" resultMap="musicResultMap">
+        SELECT datas
+        FROM music
+        WHERE name = #{name};
+    </select>
+
+    <select id="queryImageData" resultMap="musicResultMap">
+        SELECT image
+        FROM music
+        WHERE name = #{name};
+    </select>
+
+    <select id="queryAllMusicName" resultType="String">
+        SELECT name
+        FROM music
+    </select>
+
+    <resultMap id="musicResultMap" type="java.util.Map">
+        <result property="imageData" column="image" jdbcType="BLOB"
+                typeHandler="org.apache.ibatis.type.BlobTypeHandler"/>
+        <result property="musicData" column="datas" jdbcType="BLOB"
+                typeHandler="org.apache.ibatis.type.BlobTypeHandler"/>
+
+    </resultMap>
+
 
 </mapper>
