@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.io.*;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,7 +31,14 @@ public class PreLoadMusicServiceImpl implements PreLoadMusicService {
 
     @Override
     public String preDownloadImage(String name, String path) {
+        File expectPath = new File(path);
+        if (!expectPath.exists())
+            expectPath.mkdir();
         path = path + name + ".jpg";
+        File file = new File(path);
+        if (file.exists())
+            return path;
+
         byte[] imageData = (byte[]) musicDao.queryImageData(name).get("imageData");
         DBUtil.ByteToPath(imageData, path);
 
@@ -39,7 +47,14 @@ public class PreLoadMusicServiceImpl implements PreLoadMusicService {
 
     @Override
     public String preDownloadMusic(String name, String path) {
+        File expectPath = new File(path);
+        if (!expectPath.exists())
+            expectPath.mkdir();
         path = path + name + ".mp3";
+        File file = new File(path);
+        if (file.exists())
+            return path;
+
         byte[] musicData = (byte[]) musicDao.queryMusicData(name).get("musicData");
         DBUtil.ByteToPath(musicData, path);
 
@@ -48,12 +63,24 @@ public class PreLoadMusicServiceImpl implements PreLoadMusicService {
 
     @Override
     public List<String> preDownloadAllImage(String path) {
-        return null;
+        List<String> nameList = musicDao.queryAllMusicName();
+        List<String> pathList = new ArrayList<>();
+        for (String name : nameList) {
+            String imagePath = preDownloadImage(name, path);
+            pathList.add(imagePath);
+        }
+        return pathList;
     }
 
     @Override
     public List<String> preDownloadAllMusic(String path) {
-        return null;
+        List<String> nameList = musicDao.queryAllMusicName();
+        List<String> pathList = new ArrayList<>();
+        for (String name : nameList) {
+            String musicPath = preDownloadMusic(name, path);
+            pathList.add(musicPath);
+        }
+        return pathList;
     }
 
 
