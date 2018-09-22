@@ -11,17 +11,11 @@ import java.util.Map;
 
 public interface MusicDao {
 
-    void add(File file);
-
     void insertMusic(@Param("name") String name, @Param("musicData") Blob musicData, @Param("singer") String singer, @Param("duration") int duration, @Param("imageData") Blob imageData);
 
     Music queryByName(@Param("name") String name);
 
-    String findImage(String name);
-
-    List<Music> findMusicInfoList();
-
-    String findMusicData(String name);
+    String querySingerByName(@Param("name") String name);
 
     int queryMusicNum();
 

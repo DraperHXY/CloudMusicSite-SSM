@@ -35,6 +35,11 @@ public class MusicDaoTest extends BaseTest {
     }
 
     @Test
+    public void testQuerySingerByName() throws Exception {
+        System.out.println(musicDao.querySingerByName("Dreaming Alone"));
+    }
+
+    @Test
     public void testQueryMusicNum() throws Exception {
         System.out.println(musicDao.queryMusicNum());
     }

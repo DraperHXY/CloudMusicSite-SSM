@@ -1,5 +1,7 @@
 package com.draper.service.music;
 
+import com.draper.dto.MusicInfo;
+
 import java.util.List;
 
 public interface PreLoadMusicService {
@@ -13,4 +15,6 @@ public interface PreLoadMusicService {
     List<String> preDownloadAllImage(String path);
 
     List<String> preDownloadAllMusic(String path);
+
+    List<MusicInfo> loadAllMusicInfo();
 }

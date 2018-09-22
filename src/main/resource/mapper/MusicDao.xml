@@ -16,6 +16,12 @@
         WHERE name = #{name};
     </select>
 
+    <select id="querySingerByName" parameterType="String" resultType="String">
+        SELECT singer
+        FROM music
+        WHERE name = #{name}
+    </select>
+
     <select id="queryMusicNum" resultType="Integer">
         SELECT COUNT(*)
         FROM music;
